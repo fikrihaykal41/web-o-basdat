@@ -3,11 +3,6 @@ button:focus {
     outline: 0;
 }
 
-.box {
-    margin-left: 5%;
-    margin-right: 5%;    
-}
-
 .navbar {
     background-color: #4fb677;
     font-family: 'Karla', sans-serif;
@@ -33,8 +28,10 @@ button:focus {
     border-color: #CDDC39;
 }
 
-
-
+.note{
+    margin-top: 10px;
+    font-size: 12px;
+}
 
 .form-group .btn-primary{
     background-color: #4fb677;
@@ -99,6 +96,10 @@ button.navbar-toggler.border-0 {
 
 .btn-group-lg .btn, .btn-group-sm .btn {
     border-radius: 2px;
+}
+
+.md-form{
+    margin-bottom: 20px;
 }
 
 .form-elegant .font-small {
