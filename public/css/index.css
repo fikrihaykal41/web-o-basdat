@@ -1,0 +1,58 @@
+input, button{
+    outline: none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+}
+
+input:active, button:active{
+    outline: none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+}
+
+input:focus, button:active{
+    outline: none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+}
+
+#judul{
+    font-family: 'Lobster', cursive;
+    margin-top: 20px;
+}
+
+.text-bar{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.5em 1em;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #e4e4e4;
+}
+
+.select-bar{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.5em 1em;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #e4e4e4;
+}
+
+.file{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #e4e4e4;
+}
+
+.btn{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}

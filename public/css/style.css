@@ -1,0 +1,32 @@
+.row{
+	background-color: #4fb677 !important;
+}
+
+.nav-pills{
+	background-color: #4fb677 !important;	
+}
+
+.nav-link{
+	color: white !important;
+}
+
+input{
+	width: 50px;
+}
+
+.xxx {
+	margin-top: 1em;
+	float: right;
+}
+
+.btnstyle{
+	background: #4fb677;
+	color: white;
+	border-radius: 2px;
+}
+
+.btnstyle:hover {
+	background-color: #2f6d47;
+	color: white;
+  }
+  

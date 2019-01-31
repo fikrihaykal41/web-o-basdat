@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html style="font-family: 'Karla', sans-serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>Detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="icon" type="image/png" href="images/Logo only.png">
+    <script>
+        function myFunction() {
+              var x = document.getElementById("myTopnav");
+              if (x.className === "topnav") {
+                x.className += " responsive";
+              } else {
+                x.className = "topnav";
+              }
+        }
+
+        $(document).ready(function() {
+ 		$(".word").fancybox({
+  		'width': 600, // or whatever
+  		'height': 320,
+  		'type': 'iframe'
+ 		});
+		});
+    </script>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+                                                   
+    <div class="header">
+        <div class="kotak">
+            <a href="#" class="logo">
+                <img src="images/Logo putih.png">
+            </a>
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a href="#">ABOUT</a>
+            <a href="/penilaian">PENILAIAN</a>
+            <a href="/admin">LOGIN</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+<!-- NAVBAR -->
+
+
+<!-- isi -->
+
+    <div class="background">
+        <div class="cont">
+        	<h1>PROFILE</h1>
+        	<div class="profile">
+        		<div class="image">
+                    {{#each data}}    
+        			    <img src="{{foto}}">
+        		</div>
+        		<div class="block">
+        			<div class="nama">
+	        			<span>{{fg1}}</span>
+	        			<h1>{{nama}}</h1>
+	        			<h3>{{nim}}</h3>
+	        		</div>
+	        		<hr>
+	        		<div class="file">
+	        			<div class="isi">
+	        				<span>Motivational Letter</span>
+	        				<a class="word" href="{{ml}}"><button class="btn btnstyle">VIEW</button></a>
+	        			</div>
+	        			<div class="isi">
+	        				<span>Curriculum Vitae</span>
+	        				<a class="word" href="{{cv}}"><button class="btn btnstyle">VIEW</button></a>
+	        			</div>
+	        			<div class="isi">
+	        				<span>Additional Task</span>
+	        				<a class="word" href="{{addtask}}"><button class="btn btnstyle">VIEW</button></a>
+	        			</div>
+	        			<div class="isi">
+	        				<span>KHS</span>
+	        				<a class="word" href="{{khs}}"><button class="btn btnstyle">VIEW</button></a>
+	        			</div>
+                    {{/each}}
+	        		</div>
+        		</div>
+        	</div>
+        </div> 
+    </div>
+
+<!-- footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+button:focus {
+    outline: 0;
+}
+
+.navbar {
+	background-color: #4fb677 !important;
+	font-family: 'Karla', sans-serif;
+}
+
+.nav li a {
+	color: #fff;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
+.nav .navbar-nav .btn-outline-secondary {
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #CDDC39;
+}
+
+.form-group .btn-primary{
+	background-color: #4fb677;
+	border-color: #4fb677;
+
+}
+
+.form-group .btn-primary:hover {
+	background-color: #4fb677;
+	border-color: #4fb677;
+}
+
+ .nav .btn-outline-secondary {
+    color: #fff;
+    background-color: #transparent;
+    background-image: none;
+    border-color: #fff;
+}
+
+.nav .btn-outline-secondary:hover {
+    background-color: #4fb677;
+    border-color: #fff;
+
+}
+
+button#dropdownMenu1.btn.btn-outline-secondary.dropdown-toggle{
+	color: #fff;
+    background-color: #4fb677;
+    border-color: #fff;
+    box-shadow: none;
+}
+
+button.navbar-toggler.border-0.collapsed {
+	color: #fff;
+}
+
+button.navbar-toggler.border-0 {
+	color: #fff;
+}
+
+a.navbar-brand {
+	margin-left: -30px;
+}

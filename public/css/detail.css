@@ -1,0 +1,295 @@
+body {
+	background-image: url(https://i.postimg.cc/MWYjF69Q/Untitled-1.png);
+	height: 100%;
+	background-attachment: fixed;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	margin: auto;
+  	font-family: 'Karla', sans-serif;
+}
+
+/*header*/
+
+.header{
+	height: 100px;
+	background-color: #4fb677;
+}
+
+.kotak{
+	width: 60%;
+	height: 100%;
+	display: flex;
+	float: left;
+	transition: 0.35s ease;
+}
+
+.logo{
+	float: left;
+	display: block;
+	margin-top: 5px;
+	margin-left: 30%;
+	transition: 0.35s ease;
+}
+
+.logo img{
+	height: 100%;
+}
+
+
+.topnav {
+  overflow: hidden;
+  float: right;
+  width: 30%;
+  margin-top: 3%;
+  transition: 0.35s ease;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.35s ease;
+  font-weight: bold;
+}
+
+.topnav a:hover {
+  color: #204029;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 1024px){
+	.topnav{
+		margin-top: 4%;
+	}
+	.topnav a {
+		font-size: 12px
+	}
+	.logo{
+		margin-left: 20%
+	}
+}
+
+@media screen and (max-width: 900px){
+	.kotak{
+		width: 30%
+	}
+	.topnav{
+		margin-top: 5%;
+		width: 60%;
+	}
+	.topnav a {
+		font-size: 10px
+	}
+	.logo{
+		margin-left: 10%;
+		height: 70%
+	}
+	.slogan{
+		height: 40%
+	}
+}
+
+@media screen and (max-width: 700px) {
+
+	.topnav{
+		width: 100%;
+		margin-top: 0;
+		background-color: #4fb677;
+	}
+	.topnav a{
+		font-size: 12px;
+		padding: 10px;
+	}
+	.topnav a:hover{
+		background-color: #204029;
+		color: white;
+	}
+	.topnav a {display: none;}
+	.topnav a.icon {
+    	float: right;
+    	display: block;
+    	transition: 0.35s ease;
+  	}
+  	.topnav.responsive {position: relative;}
+  	.topnav.responsive .icon {
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+    	transition: 0.35s ease;
+  	}
+  	.topnav.responsive a {
+    	float: none;
+    	display: block;
+    	text-align: left;
+    	transition: 0.35s ease;
+  	}
+  	.kotak{
+  		width: 100%;
+  	}
+  	.logo{
+  		height: 60%;
+  		margin-top: 25px;
+  		margin-left: 5%;
+  	}
+}
+
+/*isi*/
+
+.cont{
+	background: white;
+	max-width: 80%;
+	height: 100%;
+	margin: auto;
+	padding: 20px 30px;
+}
+
+.cont h1{
+	margin: auto;
+}
+
+.profile{
+	margin: 10px auto;
+	border-radius: 10px;
+	border: 2px solid lightgrey;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 80%;
+}
+
+.image{
+	width: 200px;
+	height: 300px;
+	border: 1px solid lightgrey;
+	display: block;
+	margin: 5px 10px
+}
+
+.image img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.block{
+	display: block;
+	margin: auto;
+	/*background-color: blue;*/
+	width: 60%;
+}
+
+.nama{
+	display: block;
+	/*background-color: red;*/
+	height: 100px;
+	margin-bottom: 20px;
+	margin-top: 5px
+}
+
+.nama span{
+	color: grey;
+}
+
+.nama h1{
+	font-weight: 700;
+	font-size: 30px;
+}
+.nama h3{
+	font-size: 24px;
+	margin: 0;
+}
+
+.file{
+	/*background: yellow;*/
+	margin-top: 20px;
+	width: 100%;
+	margin: auto;
+}
+
+.isi{
+	line-height: 40px;
+}
+
+.isi span{
+	float: left;
+	width: 80%;
+}
+
+.btn{
+  background-color: #4fb677;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.btnstyle{
+	background: #4fb677;
+	color: white;
+	border-radius: 2px;
+}
+
+.btnstyle:hover {
+  background-color: #2f6d47;
+  color: white;
+}
+
+@media screen and (max-width: 1000px){
+	.isi span{
+		width: 75%
+	}
+}
+@media screen and (max-width: 900px){
+	.isi span{
+		width: 65%
+	}
+}
+
+@media screen and (max-width: 700px){
+	.cont{
+		max-width: 70%;
+		margin-top: 30px;
+		padding: 10px 20px
+	}
+	.cont h1{
+		font-size: 28px;
+	}
+	.image{
+		margin-top: 5px
+	}
+	.profile{
+		width: 80%;
+	}
+	.block{
+		width: 100%;
+	}
+	.nama{
+		margin-bottom: 10px;
+	}
+	.nama h1{
+		font-size: 24px;
+	}
+	.nama span{
+		font-size: 15px;
+	}
+	.nama h3{
+		font-size: 18px;
+	}
+	.isi span{
+		width: 70%;
+	}
+}
