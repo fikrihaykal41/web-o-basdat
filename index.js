@@ -130,19 +130,20 @@ app.post('/add', parser.any("file"), async (req, res) => {
     // var ref = db.ref().child('/peserta');
     //console.log(req.cv);
     // res.send(parser.storage.cloudinary.url);
-    if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
-        return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
-    }
-    var secretKey = "6LccKo4UAAAAABsMta61GcdYV4af9yUDmvI_tVVp";
-    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
-    request(verificationUrl,function(error,response,body) {
-        body = JSON.parse(body);
-        // Success will be true or false depending upon captcha validation.
-        if(body.success !== undefined && !body.success) {
-          return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
-        }
-        res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
-    });
+ ///captcha
+    // if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+    //     return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    // }
+    // var secretKey = "6LccKo4UAAAAABsMta61GcdYV4af9yUDmvI_tVVp";
+    // var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    // request(verificationUrl,function(error,response,body) {
+    //     body = JSON.parse(body);
+    //     // Success will be true or false depending upon captcha validation.
+    //     if(body.success !== undefined && !body.success) {
+    //       return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
+    //     }
+    //     res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
+    // });
     
     console.log(req.files[0].url);
     console.log(req.files[1].url);
@@ -161,17 +162,17 @@ app.post('/add', parser.any("file"), async (req, res) => {
         fg1: req.body.fg1,
         presentase1: req.body.presentase1,
         fg2: req.body.fg2,
-        presentase2: parseInt(req.body.presentase1) - parseInt(req.body.presentase2),
+        presentase2: req.body.presentase2,
         ml: req.files[0].url,
         foto: req.files[1].url,
         khs: req.files[2].url,
         cv: req.files[3].url,
         ss: req.files[4].url,
         addtask: req.files[5].url,
-        addtask2: req.files[6].url,
-        nilai_A : req.body.nilaiA,
-        nilai_B : req.body.nilaiB,
-        nilai_C : req.body.nilaiC,
+        nilai_CV : 0,
+        nilai_ML : 0,
+        nilai_KHS : 0,
+        nilai_Tugas : 0,
         nilaiTotal : 0
     }
     // ref.push(data);
@@ -188,33 +189,70 @@ app.post('/update', (req,res) => {
     // var newPostKey = db.ref().child('peserta').push().key;
     // console.log(newPostKey);
        
-    var data = req.body    
+    var data = req.body 
+    console.log(data.btn);
     for (let index = 0; index < data.index.length; index++) {
         if (data.btn == data.nim[index]){
             var i = index
         }        
     }    
+    console.log(data.btn);
+    
     var ref = db.ref('/peserta/' + data.btn)
     ref.once('value', (snapshot) => {
         var user = snapshot.val()       
         var prePost = {}
         prePost['update/' + data.btn] = user;
         db.ref().update(prePost);
+        console.log(user);
+        console.log("---------------------------");
+        console.log(req.body.nilai_CV);
+        console.log(req.body.nilai_CV[i]);
         
+        
+        
+        
+        // var newData = {
+        //     nim: user.nim,
+        //     nama: user.nama,
+        //     fakultas: user.fakultas,
+        //     jurusan: user.jurusan,
+        //     cv: user.cv,
+        //     nilai_A : req.body.nilaiA[i],
+        //     nilai_B : req.body.nilaiB[i],
+        //     nilai_C : req.body.nilaiC[i],
+        //     nilaiTotal : (parseInt(req.body.nilaiA[i]) + parseInt(req.body.nilaiB[i]) + parseInt(req.body.nilaiC[i]))/3
+        // }
         var newData = {
-            nim: user.nim,
             nama: user.nama,
-            fakultas: user.fakultas,
+            email: user.email,
+            nim: user.nim,
+            nohp: user.nohp,
+            idline: user.idline,
             jurusan: user.jurusan,
+            angkatan: user.angkatan,
+            fg1: user.fg1,
+            presentase1: user.presentase1,
+            fg2: user.fg2,
+            presentase2: user.presentase2,
+            ml: user.ml,
+            foto: user.foto,
+            khs: user.khs,
             cv: user.cv,
-            nilai_A : req.body.nilaiA[i],
-            nilai_B : req.body.nilaiB[i],
-            nilai_C : req.body.nilaiC[i],
-            nilaiTotal : (parseInt(req.body.nilaiA[i]) + parseInt(req.body.nilaiB[i]) + parseInt(req.body.nilaiC[i]))/3
+            ss: user.ss,
+            addtask: user.addtask,
+            nilai_CV : req.body.nilai_CV[i],
+            nilai_ML : req.body.nilai_ML[i],
+            nilai_KHS : req.body.nilai_KHS[i],
+            nilai_Tugas : req.body.nilai_Tugas[i],
+            nilaiTotal : (parseInt(req.body.nilai_CV[i]) + parseInt(req.body.nilai_ML[i]) + parseInt(req.body.nilai_KHS[i]) + parseInt(req.body.nilai_Tugas[i]))/4
         }
+        
+
         // var ref = db.ref().child('update/' + data.btn)
         // ref.push(newData)
-
+        console.log(newData);
+        
         var updates = {};
         updates['peserta/' + data.btn] = newData;
         if (db.ref().update(updates)) {
@@ -245,20 +283,18 @@ app.get('/semua', (req,res) => {
     }  
 })
 
-app.get('/detail', (req,res) => {
-    var ref = db.ref('peserta');
-    sess = req.session;
-    if(sess.username) {
-        ref.once('value', (snapshot) => {
-            var data = snapshot.val()
-                res.render('detail', {
-                    data : data
-                })
-            })
-    }
-    else {
-        res.redirect('/admin');
-    }  
+
+app.get('/detail/:id', (req,res) => {
+    console.log(req.params.id);
+    var ref = db.ref('/peserta/' +req.params.id)
+    ref.once('value', (snapshot) => {
+        var data = snapshot.val()
+        console.log(data);
+        
+        res.render('detail', {
+            data : data
+        })
+    })
 })
 
 app.get('/penilaian', (req,res) => {

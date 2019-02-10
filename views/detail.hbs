@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0" />
-    <title>Detail</title>
+    <title>Basisdatalab</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,13 +22,13 @@
               }
         }
 
-        $(document).ready(function() {
+        /*$(document).ready(function() {
  		$(".word").fancybox({
   		'width': 600, // or whatever
   		'height': 320,
   		'type': 'iframe'
  		});
-		});
+		});*/
     </script>
 
 </head>
@@ -40,14 +40,12 @@
                                                    
     <div class="header">
         <div class="kotak">
-            <a href="#" class="logo">
-                <img src="images/Logo putih.png">
+            <a href="/admin" class="logo">
+                <img src="../images/Logo putih.png">
             </a>
         </div>
         <div class="topnav" id="myTopnav">
-            <a href="#">ABOUT</a>
-            <a href="/penilaian">PENILAIAN</a>
-            <a href="/admin">LOGIN</a>
+            <a href="/admin">HOME</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
@@ -60,37 +58,41 @@
 
     <div class="background">
         <div class="cont">
-        	<h1>PROFILE</h1>
+        	<h1 style="margin-left: 100px">PROFILE</h1>
         	<div class="profile">
         		<div class="image">
-                    {{#each data}}    
-        			    <img src="{{foto}}">
+ 
+        			    <img src="{{data.foto}}">
         		</div>
         		<div class="block">
         			<div class="nama">
-	        			<span>{{fg1}}</span>
-	        			<h1>{{nama}}</h1>
-	        			<h3>{{nim}}</h3>
+	        			<span>{{data.fg1}}</span>
+	        			<h1>{{data.nama}}</h1>
+	        			<h3>{{data.nim}}</h3>
 	        		</div>
 	        		<hr>
 	        		<div class="file">
 	        			<div class="isi">
 	        				<span>Motivational Letter</span>
-	        				<a class="word" href="{{ml}}"><button class="btn btnstyle">VIEW</button></a>
+	        				<a class="word" href="{{data.ml}}"><button class="btn btnstyle">VIEW</button></a>
 	        			</div>
 	        			<div class="isi">
 	        				<span>Curriculum Vitae</span>
-	        				<a class="word" href="{{cv}}"><button class="btn btnstyle">VIEW</button></a>
+	        				<a class="word" href="{{data.cv}}"><button class="btn btnstyle">VIEW</button></a>
+	        			</div>
+                        <div class="isi">
+	        				<span>Screenshot</span>
+	        				<a class="word" href="{{data.ss}}"><button class="btn btnstyle">VIEW</button></a>
 	        			</div>
 	        			<div class="isi">
 	        				<span>Additional Task</span>
-	        				<a class="word" href="{{addtask}}"><button class="btn btnstyle">VIEW</button></a>
+	        				<a class="word" href="{{data.addtask}}"><button class="btn btnstyle">VIEW</button></a>
 	        			</div>
 	        			<div class="isi">
 	        				<span>KHS</span>
-	        				<a class="word" href="{{khs}}"><button class="btn btnstyle">VIEW</button></a>
+	        				<a class="word" href="{{data.khs}}"><button class="btn btnstyle">VIEW</button></a>
 	        			</div>
-                    {{/each}}
+                    
 	        		</div>
         		</div>
         	</div>

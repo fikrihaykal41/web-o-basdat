@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Basisdatalab</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
+	<title>Basisdatalab</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="shortcut icon" href="../images/Logo only.png">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	 crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 </head>
+
 <body>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-10 col-md-10">
-			  	<h1><img style="height: 6%; width: 6%;" src="../images/Logo only white.png">Penilaian</h1>
+				<h1><img style="height: 6%; width: 6%;" src="../images/Logo only.png">Penilaian</h1>
 			</div>
 			<div class="col-sm-2 col-md-2">
-		  		<a class="btn btn-primary" href="#" style="margin-top: 10px;">Logout</a>
+				<form action="/logout">
+					<button type="submit" id="submit" class="btn btn-primary" style="margin-top: 15px;">Logout</button>
+				</form>
 			</div>
 		</div>
-		<br> 
-		    <div class="dropdown">
-			  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Focus Group
-			  </a>
-
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			    <a class="dropdown-item" href="#">Product</a>
-			    <a class="dropdown-item" href="#">Big Data</a>
-			    <a class="dropdown-item" href="#">Spatial</a>
-			  </div>
-			</div>
 		<br>
-	  <ul class="nav nav-pills nav-fill nav-tabs">
-		  <li class="nav-item">
-		    <a class="nav-link" href="/penilaian">Tahap 1</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/penilaian2">Tahap 2</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/penilaian3">Tahap 3</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link active" href="/semua">Semua</a>
-		  </li>
+		<div class="dropdown">
+			<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+			 aria-haspopup="true" aria-expanded="false">
+				Topik
+			</a>
+
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				<a class="dropdown-item" href="#">Product</a>
+				<a class="dropdown-item" href="#">Data Science</a>
+			</div>
+		</div>
+		<br>
+		<ul class="nav nav-pills nav-fill nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="/penilaian">Tahap 1</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/penilaian2">Tahap 2</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/penilaian3">Tahap 3</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="/semua">Nilai Total</a>
+			</li>
 		</ul>
-	<br>
-	<table id="table_id" class="display text-center">
-	    <thead>
-	        <tr>
-	            <th>Nama</th>
-	            <th>Nilai</th>
-	            <th>Lihat detail</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <tr>
-	          {{#each data}}
-	            <td>{{nama}}</td>
-	            <td><input type="text" name="Tugas"></td>
-	            <td><a class="btn btn-primary" href="/detail">Detail</a></td>
-						{{/each}}
-	        </tr>
-	    </tbody>
-	</table>
-				<div class="xxx">
-					<a class="btn btn-primary" href="#">Submit</a>
-				</div>
-</div>
+		<br>
+		<table id="table_id" class="display text-center">
+			<thead>
+				<tr>
+					<th>Nama</th>
+					<th>Nim</th>
+					<th>Topik</th>
+					<th>Niali Total</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+					{{#each data}}
+					<tr>
+						<td><a href="/detail/{{nim}}"><b>{{nama}}</a></b></td>
+						<input style="display:none" name="index" value="{{@index}}">
+						<input style="display:none" name="nim" value="{{nim}}">
+						<td><b>{{nim}}</b></td>
+						<td><b>{{fg1}}</b></td>
+						<td><input name="nilai_Tugas" value="{{nilaiTotal}}" class="text-center" type="number" style="width: 50px" disabled></td>
+						 
+						<td><button type="submit" name="btn" value="{{nim}}" class="btn btn-primary">Detail</button></td>
+						
+						{{!-- <i class="fas fa-plus"></i> --}}
+						
+					</tr>
+					{{/each}}
+			</tbody>
+		</table>
+	</div>
 
 </body>
 <script type="text/javascript">
-	$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+	$(document).ready(function () {
+		$('#table_id').DataTable();
+	});
 </script>
+
 </html>
