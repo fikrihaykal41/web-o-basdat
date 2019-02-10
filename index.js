@@ -46,18 +46,6 @@ var db = firebase.database()
 
 const parser = multer({ storage: storage });
 
-//           MULTER
-// const storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, 'public/file/')
-//     },
-//     filename: function(req, file, cb) {
-//         cb(null, req.body.nim + "_" + file.originalname)
-//     }
-// })
-
-// const upload = multer({ storage: storage })
-
 app.use(express.static('public'))
 
 app.use(session({secret: 'ssshhhhh'}));
@@ -71,79 +59,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// app.post('/login', (req,res) => {
-//     var ref = db.ref('admin');
-//     console.log(req.body.username);
-
-//     ref.once('value', (snapshot) => {
-//         var data = snapshot.val()
-//         if (data.username == req.body.username && data.password == req.body.password) {
-//             res.redirect('/')
-//         }else {
-//             res.redirect('/admin')
-//         }
-//     })
-// })
-
-// =============================== TEST UPLOAD IMAGE ===========================================
-app.get('/test', (req, res) => {
-    res.render('test')
-})
-
-app.post('/add/Images', parser.single("file"), async (req, res) => {
-     const result = await cloudinary.v2.uploader.upload(req.file.path)
-    //  console.log(result);
-     console.log(req.file.url);
-    
-
-    const image = {};
-    image.url = req.file.url;
-    image.id = req.file.public_id;
-    Image.create(image) // save image information in database
-      .then(newImage => res.json(newImage))
-      .catch(err => console.log(err));
-});
-
-
-app.get('/view', (req, res) => {
-    cloudinary.v2.api.resources(
-        function(error, result){
-            
-            // console.log(result.resources[0])
-            res.render('test', {
-                data : result.resources
-            })
-        });
-})
-
-// ================================== END TEST ========================================
-
 app.post('/add', parser.any("file"), async (req, res) => {
-    // ========================= kalo belum ada parent harus di push dulu, ga bisa pake update langsung ========
-    // db.ref().child('peserta').push({
-    //     nim: req.body.nim,
-    //     nama: req.body.nama,
-    //     fakultas: req.body.fakultas,
-    //     jurusan: req.body.jurusan,
-    //     cv: req.body.nim + "_" + req.body.nama
-    // })
-    // var ref = db.ref().child('/peserta');
-    //console.log(req.cv);
-    // res.send(parser.storage.cloudinary.url);
  ///captcha
-    // if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
-    //     return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
-    // }
-    // var secretKey = "6LccKo4UAAAAABsMta61GcdYV4af9yUDmvI_tVVp";
-    // var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
-    // request(verificationUrl,function(error,response,body) {
-    //     body = JSON.parse(body);
-    //     // Success will be true or false depending upon captcha validation.
-    //     if(body.success !== undefined && !body.success) {
-    //       return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
-    //     }
-    //     res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
-    // });
+    if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+        return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    }
+    var secretKey = "6LccKo4UAAAAABsMta61GcdYV4af9yUDmvI_tVVp";
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    request(verificationUrl,function(error,response,body) {
+        body = JSON.parse(body);
+        // Success will be true or false depending upon captcha validation.
+        if(body.success !== undefined && !body.success) {
+          return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
+        }
+        res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
+    });
     
     console.log(req.files[0].url);
     console.log(req.files[1].url);
@@ -184,10 +114,6 @@ app.post('/add', parser.any("file"), async (req, res) => {
 })
         
 app.post('/update', (req,res) => {
-
-    // Get a key for a new Post.
-    // var newPostKey = db.ref().child('peserta').push().key;
-    // console.log(newPostKey);
        
     var data = req.body 
     console.log(data.btn);
@@ -208,21 +134,7 @@ app.post('/update', (req,res) => {
         console.log("---------------------------");
         console.log(req.body.nilai_CV);
         console.log(req.body.nilai_CV[i]);
-        
-        
-        
-        
-        // var newData = {
-        //     nim: user.nim,
-        //     nama: user.nama,
-        //     fakultas: user.fakultas,
-        //     jurusan: user.jurusan,
-        //     cv: user.cv,
-        //     nilai_A : req.body.nilaiA[i],
-        //     nilai_B : req.body.nilaiB[i],
-        //     nilai_C : req.body.nilaiC[i],
-        //     nilaiTotal : (parseInt(req.body.nilaiA[i]) + parseInt(req.body.nilaiB[i]) + parseInt(req.body.nilaiC[i]))/3
-        // }
+  
         var newData = {
             nama: user.nama,
             email: user.email,
@@ -248,9 +160,6 @@ app.post('/update', (req,res) => {
             nilaiTotal : (parseInt(req.body.nilai_CV[i]) + parseInt(req.body.nilai_ML[i]) + parseInt(req.body.nilai_KHS[i]) + parseInt(req.body.nilai_Tugas[i]))/4
         }
         
-
-        // var ref = db.ref().child('update/' + data.btn)
-        // ref.push(newData)
         console.log(newData);
         
         var updates = {};
