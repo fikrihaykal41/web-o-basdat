@@ -64,7 +64,7 @@ app.post('/add', parser.any("file"), async (req, res) => {
     if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
         return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
     }
-    var secretKey = "6LccKo4UAAAAABsMta61GcdYV4af9yUDmvI_tVVp";
+    var secretKey = "6Lf1ZZAUAAAAAH9jIa6wYhWLOB4TkgBZB_hRQevE";
     var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
     request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
@@ -114,6 +114,10 @@ app.post('/add', parser.any("file"), async (req, res) => {
 })
         
 app.post('/update', (req,res) => {
+
+    // Get a key for a new Post.
+    // var newPostKey = db.ref().child('peserta').push().key;
+    // console.log(newPostKey);
        
     var data = req.body 
     console.log(data.btn);
@@ -134,7 +138,7 @@ app.post('/update', (req,res) => {
         console.log("---------------------------");
         console.log(req.body.nilai_CV);
         console.log(req.body.nilai_CV[i]);
-  
+
         var newData = {
             nama: user.nama,
             email: user.email,
@@ -160,6 +164,9 @@ app.post('/update', (req,res) => {
             nilaiTotal : (parseInt(req.body.nilai_CV[i]) + parseInt(req.body.nilai_ML[i]) + parseInt(req.body.nilai_KHS[i]) + parseInt(req.body.nilai_Tugas[i]))/4
         }
         
+
+        // var ref = db.ref().child('update/' + data.btn)
+        // ref.push(newData)
         console.log(newData);
         
         var updates = {};
