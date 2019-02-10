@@ -81,7 +81,11 @@
 						<td><b>{{fg1}}</b></td>
 						<td><input name="nilai_Tugas" value="{{nilaiTotal}}" class="text-center" type="number" style="width: 50px" disabled></td>
 						 
-						<td><button type="submit" name="btn" value="{{nim}}" class="btn btn-primary">Detail</button></td>
+						<td>
+							<button type="submit" name="btn" value="{{nim}}" class="btn btn-primary">
+								<a href="/detail/{{nim}}" style="color: white; text-decoration: none !important">Detail</a>
+							</button>
+						</td>
 						
 						{{!-- <i class="fas fa-plus"></i> --}}
 						
