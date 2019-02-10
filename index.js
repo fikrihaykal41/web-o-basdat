@@ -86,35 +86,35 @@ app.set('views', path.join(__dirname, 'views'));
 // })
 
 // =============================== TEST UPLOAD IMAGE ===========================================
-app.get('/test', (req, res) => {
-    res.render('test')
-})
+// app.get('/test', (req, res) => {
+//     res.render('test')
+// })
 
-app.post('/add/Images', parser.single("file"), async (req, res) => {
-     const result = await cloudinary.v2.uploader.upload(req.file.path)
-    //  console.log(result);
-     console.log(req.file.url);
+// app.post('/add/Images', parser.single("file"), async (req, res) => {
+//      const result = await cloudinary.v2.uploader.upload(req.file.path)
+//     //  console.log(result);
+//      console.log(req.file.url);
     
 
-    const image = {};
-    image.url = req.file.url;
-    image.id = req.file.public_id;
-    Image.create(image) // save image information in database
-      .then(newImage => res.json(newImage))
-      .catch(err => console.log(err));
-});
+//     const image = {};
+//     image.url = req.file.url;
+//     image.id = req.file.public_id;
+//     Image.create(image) // save image information in database
+//       .then(newImage => res.json(newImage))
+//       .catch(err => console.log(err));
+// });
 
 
-app.get('/view', (req, res) => {
-    cloudinary.v2.api.resources(
-        function(error, result){
+// app.get('/view', (req, res) => {
+//     cloudinary.v2.api.resources(
+//         function(error, result){
             
-            // console.log(result.resources[0])
-            res.render('test', {
-                data : result.resources
-            })
-        });
-})
+//             // console.log(result.resources[0])
+//             res.render('test', {
+//                 data : result.resources
+//             })
+//         });
+// })
 
 // ================================== END TEST ========================================
 
@@ -145,12 +145,12 @@ app.post('/add', parser.any("file"), async (req, res) => {
         res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
     });
     
-    console.log(req.files[0].url);
-    console.log(req.files[1].url);
-    console.log(req.files[2].url);
-    console.log(req.files[3].url);
-    console.log(req.files[4].url);
-    console.log(req.files[5].url);
+    // console.log(req.files[0].url);
+    // console.log(req.files[1].url);
+    // console.log(req.files[2].url);
+    // console.log(req.files[3].url);
+    // console.log(req.files[4].url);
+    // console.log(req.files[5].url);
     var data = {
         nama: req.body.nama,
         email: req.body.email,
@@ -190,13 +190,13 @@ app.post('/update', (req,res) => {
     // console.log(newPostKey);
        
     var data = req.body 
-    console.log(data.btn);
+    // console.log(data.btn);
     for (let index = 0; index < data.index.length; index++) {
         if (data.btn == data.nim[index]){
             var i = index
         }        
     }    
-    console.log(data.btn);
+    // console.log(data.btn);
     
     var ref = db.ref('/peserta/' + data.btn)
     ref.once('value', (snapshot) => {
@@ -204,10 +204,10 @@ app.post('/update', (req,res) => {
         var prePost = {}
         prePost['update/' + data.btn] = user;
         db.ref().update(prePost);
-        console.log(user);
-        console.log("---------------------------");
-        console.log(req.body.nilai_CV);
-        console.log(req.body.nilai_CV[i]);
+        // console.log(user);
+        // console.log("---------------------------");
+        // console.log(req.body.nilai_CV);
+        // console.log(req.body.nilai_CV[i]);
         
         
         
@@ -251,7 +251,7 @@ app.post('/update', (req,res) => {
 
         // var ref = db.ref().child('update/' + data.btn)
         // ref.push(newData)
-        console.log(newData);
+        // console.log(newData);
         
         var updates = {};
         updates['peserta/' + data.btn] = newData;
@@ -285,11 +285,11 @@ app.get('/semua', (req,res) => {
 
 
 app.get('/detail/:id', (req,res) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     var ref = db.ref('/peserta/' +req.params.id)
     ref.once('value', (snapshot) => {
         var data = snapshot.val()
-        console.log(data);
+        // console.log(data);
         
         res.render('detail', {
             data : data
@@ -364,8 +364,8 @@ app.get('/admin',function(req,res){
     sess = req.session;
     var username_ = req.body.login;
     var pass_ = req.body.password;
-    console.log('username = '+username_); //admin123
-    console.log('pass = '+pass_) //admin123
+    // console.log('username = '+username_); //admin123
+    // console.log('pass = '+pass_) //admin123
     // ---------------untuk akun lebih dari satu----------------------
     // var query = firebase.database().ref("akun").orderByKey();
     // query.once("value").then(function(snapshot) {
